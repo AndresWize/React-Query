@@ -23,7 +23,7 @@ export function useUserAppointments(): Appointment[] {
   const { user } = useUser();
   // TODO replace with React Query
   const { data: userAppointments = [] } = useQuery({
-    queryKey: ['user-appointments'],
+    queryKey: [queryKeys.appointments, queryKeys.user, user.id],
     queryFn: () => getUserAppointments(user),
     enabled: !!user,
   });
